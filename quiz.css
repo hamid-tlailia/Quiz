@@ -1,0 +1,285 @@
+* {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+:root {
+  --background-color: #fff;
+  --text-color: #121416d8;
+  --title-color: #543fd7;
+  --border-color : black;
+}
+
+body.light {
+  --background-color: #fff;
+  --text-color: #121416d8;
+  --title-color: #543fd7;
+  --border-color :black;
+}
+
+body.dark {
+  --background-color: #212a2e;
+  --text-color: #F7F8F8;
+  --title-color: #828fff;
+  --border-color :white;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: "Times New Roman";
+  font-size: 17px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  direction: rtl;
+}
+  
+.container-fluid {
+  width: 100%;
+  padding: 0;
+}
+.card{
+  background-color: var(--background-color);
+  
+}
+.card-body {
+  position: relative;
+  border-block: 1px solid var(--border-color);
+  opacity: 1;
+}
+.title {
+  position: absolute;
+  color: var(--title-color);
+  font-size: 25px;
+  opacity: 0;
+}
+.title.active {
+  position: relative;
+  opacity: 1;
+}
+.btn {
+  z-index: 100 !important;
+}
+.direction-ltr {
+  direction: ltr !important;
+}
+.move {
+  background-color: var(--title-color);
+  color: white;
+}
+.options {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-right: 8px;
+  gap: 8px;
+  opacity: 0;
+  z-index: -1;
+}
+
+.options p {
+  position: absolute;
+  background-color:hsl(27.8,71.9%,28.9%);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  opacity: 0;
+  width: 350px;
+  transition: .1s;
+  right: -100%;
+}
+.options.active {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+  right: 0;
+}
+.options.active p{
+  position: relative;
+  right: 0;
+  opacity: 1;
+}
+.options p.correct {
+  background-color: green;
+  pointer-events: none;
+}
+.options p.wrong {
+  background-color: red;
+  pointer-events: none;
+}
+.options p.active {
+  position: relative;
+  opacity: 1;
+}
+.options p::after {
+  content : " ";
+position : absolute ;
+right: -12px; 
+top: 0px; 
+border-top: 15px solid hsl(27.8,71.9%,28.9%) ;
+border-right: 15px solid transparent ;
+border-left: 15px solid transparent;
+border-bottom: 15px solid transparent ;
+transition: .1s;
+}
+.options p.correct::after {
+  border-top: 15px solid green;
+}
+.options p.wrong::after {
+  border-top: 15px solid red;
+}
+.quiz-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.icon {
+  width: 70px;
+  height: 40px;
+}
+.switch-container {
+display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#checkbox {
+  visibility: hidden;
+}
+
+
+.label {
+  position: relative;
+  display: flex;
+  height: 26px;
+  width: 60px;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 5px 4px 10px #333;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.shadow {
+  box-shadow: 5px 4px 10px #333;
+}
+.moon {
+  color: #fafc49;
+  position: absolute;
+  left: 0;
+}
+.sun {
+  position: absolute;
+  right: 0;
+  color: #f9452c;
+}
+
+.ball {
+  background-color: black;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.5s;
+}
+#checkbox:checked + .label .ball {
+  transform: translateX(35px);
+}
+#checkbox:checked + .label {
+  background-color: black;
+}
+#checkbox:checked + .label .ball {
+  background-color: white ;
+}
+.gues {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding-right: 10px;
+  padding-top: 6px;
+}
+.q-description {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.q-description.active {
+  position : relative;
+  opacity: 1;
+  transition: 3s;
+  height: auto;
+}
+
+.indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: green;
+  width: 40%;
+  height: 40px;
+  border-radius: 8px;
+  top: 40px;
+  left:30%;
+  padding-top: 23px;
+  z-index: 2;
+  direction: ltr !important;
+}
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: ltr !important;
+}
+.loader.active {
+  z-index: 110;
+}
+.modal {
+  direction: ltr !important;
+  
+}
+.modal div{
+  background-color: var(--background-color) !important;
+}
+.score-infos {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+}
+.score-infos p {
+  border: 1px solid purple;
+  width: 350px;
+  padding: 6px;
+}
+.gues {
+  height: 0;
+  transition: .5s;
+  opacity: 0;
+  overflow: hidden;
+}
+.gues.active{
+  opacity: 1;
+  height: auto;
+}
